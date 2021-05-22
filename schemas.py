@@ -3,7 +3,8 @@ from models import FuelType
 from typing import Optional, List
 
 
-class CreateCar(BaseModel):
+# TO support creation and update APIs
+class CreateAndUpdateCar(BaseModel):
     manufacturer: str
     modelName: str
     cc: int
@@ -13,24 +14,17 @@ class CreateCar(BaseModel):
     fuelType: FuelType
 
 
-class Car(CreateCar):
+# TO support list and get APIs
+class Car(CreateAndUpdateCar):
     id: int
 
     class Config:
         orm_mode = True
 
 
+# To support list cars API
 class PaginatedCarInfo(BaseModel):
     limit: int
     offset: int
     data: List[Car]
 
-
-class UpdateCar(BaseModel):
-    manufacturer: Optional[str]
-    modelName: Optional[str]
-    cc: Optional[int]
-    onRoadPrice: Optional[int]
-    seatingCapacity: Optional[int]
-    gearBox: Optional[int]
-    fuelType: Optional[FuelType]
