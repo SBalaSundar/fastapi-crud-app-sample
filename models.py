@@ -5,8 +5,8 @@ import enum
 
 
 class FuelType(str, enum.Enum):
-    petrol = "Petrol"
-    diesel = "Diesel"
+    Petrol = "Petrol"
+    Diesel = "Diesel"
 
 
 class CarInfo(Base):
